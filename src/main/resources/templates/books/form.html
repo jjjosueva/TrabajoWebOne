@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${#fields.hasErrors('*')} ? 'Errores' : 'Libro'">Libro</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<nav class="topbar">
+    <a th:href="@{/books}" class="btn outline">Volver</a>
+</nav>
+<div class="container">
+    <form th:action="${book.id} != null ? @{'/books/' + ${book.id}} : @{/books}" method="post" th:object="${book}" class="card">
+        <div class="form-row">
+            <label for="title">Título</label>
+            <input id="title" type="text" th:field="*{title}" required>
+            <small class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></small>
+        </div>
+        <div class="form-row">
+            <label for="author">Autor</label>
+            <input id="author" type="text" th:field="*{author}">
+        </div>
+        <button class="btn" type="submit" th:text="${book.id} != null ? 'Actualizar' : 'Crear'">Crear</button>
+    </form>
+</div>
+</body>
+</html>

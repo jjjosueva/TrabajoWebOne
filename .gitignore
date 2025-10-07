@@ -1,0 +1,13 @@
+
+# Maven
+/target
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper/maven-wrapper.jar
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Logs
+*.log
